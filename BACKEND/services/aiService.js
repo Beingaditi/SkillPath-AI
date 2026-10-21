@@ -41,7 +41,7 @@ export const generateRoadmapWithAI = async (goal, level, weeklyHours) => {
   try {
     const completion = await groq.chat.completions.create({
       messages: [{ role: 'user', content: prompt }],
-      model: 'llama-3.3-70b-versatile',
+      model: 'openai/gpt-oss-120b',
       temperature: 0.3, // Lower temperature for more consistent JSON
     });
 
@@ -96,7 +96,7 @@ export const generateProjectRecommendations = async (difficulty) => {
   try {
     const completion = await groq.chat.completions.create({
       messages: [{ role: 'user', content: prompt }],
-      model: 'llama-3.3-70b-versatile',
+      model: 'openai/gpt-oss-120b',
       temperature: 0.5,
     });
 
@@ -128,7 +128,7 @@ export const chatWithAI = async (messages) => {
   try {
     const completion = await groq.chat.completions.create({
       messages: formattedMessages,
-      model: 'llama-3.3-70b-versatile',
+      model: 'openai/gpt-oss-120b',
       temperature: 0.7,
       max_tokens: 1024,
     });
@@ -162,7 +162,7 @@ export const generateStepLesson = async (topic, description) => {
   try {
     const completion = await groq.chat.completions.create({
       messages: [{ role: 'user', content: prompt }],
-      model: 'llama-3.3-70b-versatile',
+      model: 'openai/gpt-oss-120b',
       temperature: 0.5,
     });
 
@@ -198,7 +198,7 @@ export const generateStepQuiz = async (topic, description) => {
   try {
     const completion = await groq.chat.completions.create({
       messages: [{ role: 'user', content: prompt }],
-      model: 'llama-3.3-70b-versatile',
+      model: 'openai/gpt-oss-120b',
       temperature: 0.3,
     });
 
