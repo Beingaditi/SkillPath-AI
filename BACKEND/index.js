@@ -29,24 +29,26 @@ connectDB();
 const app = express();
 
 // Security and utility middleware
+
 app.use(helmet());
-const clientUrl = process.env.CLIENT_URL;
+
 const allowedOrigins = [
   'http://localhost:5173',
-  clientUrl,
-  clientUrl ? clientUrl.replace(/\/$/, '') : null
+  process.env.CLIENT_URL,
 ].filter(Boolean);
 
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+      return callback(null, true);
     }
+    return callback(new Error(`Not allowed by CORS: ${origin}`));
   },
   credentials: true,
 }));
+
+
+
 app.use(express.json());
 app.use(cookieParser());
 
